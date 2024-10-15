@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.events.CallbackEvent;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.LikesInfo;
@@ -15,7 +16,7 @@ import java.util.Objects;
 /**
  * Wallpost object
  */
-public class Wallpost implements Validable {
+public class Wallpost implements Validable, CallbackEvent {
     /**
      * Access key to private object
      */

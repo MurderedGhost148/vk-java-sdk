@@ -62,13 +62,13 @@ public enum Events {
     VIDEO_COMMENT_DELETE(VideoCommentDelete.class),
 
     @SerializedName("wall_post_new")
-    WALL_POST_NEW(Wallpost.class),
+    WALL_POST_NEW(WallPostNew.class),
 
     @SerializedName("wall_repost")
     WALL_REPOST(Wallpost.class),
 
     @SerializedName("wall_reply_new")
-    WALL_REPLY_NEW(WallComment.class),
+    WALL_REPLY_NEW(WallReplyNew.class),
 
     @SerializedName("wall_reply_edit")
     WALL_REPLY_EDIT(WallComment.class),

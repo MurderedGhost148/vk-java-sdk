@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.events.CallbackEvent;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
@@ -15,7 +16,7 @@ import java.util.Objects;
 /**
  * WallComment object
  */
-public class WallComment implements Validable {
+public class WallComment implements Validable, CallbackEvent {
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
 
