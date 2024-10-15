@@ -1,8 +1,8 @@
 subprojects {
     apply plugin: 'java'
 
-    group 'com.vk.api'
-    version '1.0.16'
+    group 'ru.rm.vk.api'
+    version '1.0.16-hotfix'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
