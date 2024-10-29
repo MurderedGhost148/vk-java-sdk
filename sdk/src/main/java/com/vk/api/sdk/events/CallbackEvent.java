@@ -380,6 +380,12 @@ public interface CallbackEvent {
         System.out.println("Received callback message type: " + message.getType());
         System.out.println("Received callback message: " + message.getObject());
 
+        if(message.getType() == null) {
+            LOG.error("Callback message type is null on: {}", message);
+
+            return null;
+        }
+
         String objectToDeserialize = message.getObject().toString();
         switch (message.getType()) {
             case MESSAGE_NEW:
