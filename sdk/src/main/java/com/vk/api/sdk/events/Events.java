@@ -7,7 +7,6 @@ import com.vk.api.sdk.objects.callback.*;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
-import com.vk.api.sdk.objects.wall.Wallpost;
 
 import java.lang.reflect.Type;
 
@@ -65,7 +64,7 @@ public enum Events {
     WALL_POST_NEW(WallPostNew.class),
 
     @SerializedName("wall_repost")
-    WALL_REPOST(Wallpost.class),
+    WALL_REPOST(WallRepost.class),
 
     @SerializedName("wall_reply_new")
     WALL_REPLY_NEW(WallReplyNew.class),

@@ -404,167 +404,173 @@ public interface CallbackEvent {
 
         System.out.println("Deserialized event object: " + event.toString());
 
-        switch (message.getType()) {
-            case CONFIRMATION: {
-                confirmation();
-                return "OK";
+        try {
+            switch (message.getType()) {
+                case CONFIRMATION: {
+                    confirmation();
+                    return "OK";
+                }
+                case MESSAGE_NEW: {
+                    messageNew(message.getGroupId(), (MessageNew) event);
+                    return "OK";
+                }
+                case MESSAGE_REPLY: {
+                    messageReply(message.getGroupId(), (MessageReply) event);
+                    return "OK";
+                }
+                case MESSAGE_EDIT: {
+                    messageEdit(message.getGroupId(), (MessageEdit) event);
+                    return "OK";
+                }
+                case MESSAGE_ALLOW: {
+                    messageAllow(message.getGroupId(), (MessageAllow) event);
+                    return "OK";
+                }
+                case MESSAGE_DENY: {
+                    messageDeny(message.getGroupId(), (MessageDeny) event);
+                    return "OK";
+                }
+                case PHOTO_NEW: {
+                    photoNew(message.getGroupId(), (PhotoNew) event);
+                    return "OK";
+                }
+                case PHOTO_COMMENT_NEW: {
+                    photoCommentNew(message.getGroupId(), (PhotoComment) event);
+                    return "OK";
+                }
+                case PHOTO_COMMENT_EDIT: {
+                    photoCommentEdit(message.getGroupId(), (PhotoComment) event);
+                    return "OK";
+                }
+                case PHOTO_COMMENT_RESTORE: {
+                    photoCommentRestore(message.getGroupId(), (PhotoComment) event);
+                    return "OK";
+                }
+                case PHOTO_COMMENT_DELETE: {
+                    photoCommentDelete(message.getGroupId(), (PhotoCommentDelete) event);
+                    return "OK";
+                }
+                case AUDIO_NEW: {
+                    audioNew(message.getGroupId(), (AudioNew) event);
+                    return "OK";
+                }
+                case VIDEO_NEW: {
+                    videoNew(message.getGroupId(), (VideoNew) event);
+                    return "OK";
+                }
+                case VIDEO_COMMENT_NEW: {
+                    videoCommentNew(message.getGroupId(), (VideoComment) event);
+                    return "OK";
+                }
+                case VIDEO_COMMENT_EDIT: {
+                    videoCommentEdit(message.getGroupId(), (VideoComment) event);
+                    return "OK";
+                }
+                case VIDEO_COMMENT_RESTORE: {
+                    videoCommentRestore(message.getGroupId(), (VideoComment) event);
+                    return "OK";
+                }
+                case VIDEO_COMMENT_DELETE: {
+                    videoCommentDelete(message.getGroupId(), (VideoCommentDelete) event);
+                    return "OK";
+                }
+                case WALL_POST_NEW: {
+                    wallPostNew(message.getGroupId(), (WallPostNew) event);
+                    return "OK";
+                }
+                case WALL_REPOST: {
+                    wallRepost(message.getGroupId(), (WallRepost) event);
+                    return "OK";
+                }
+                case WALL_REPLY_NEW: {
+                    wallReplyNew(message.getGroupId(), (WallReplyNew) event);
+                    return "OK";
+                }
+                case WALL_REPLY_EDIT: {
+                    wallReplyEdit(message.getGroupId(), (WallReplyEdit) event);
+                    return "OK";
+                }
+                case WALL_REPLY_RESTORE: {
+                    wallReplyRestore(message.getGroupId(), (WallReplyRestore) event);
+                    return "OK";
+                }
+                case WALL_REPLY_DELETE: {
+                    wallReplyDelete(message.getGroupId(), (WallCommentDelete) event);
+                    return "OK";
+                }
+                case BOARD_POST_NEW: {
+                    boardPostNew(message.getGroupId(), (BoardPostNew) event);
+                    return "OK";
+                }
+                case BOARD_POST_EDIT: {
+                    boardPostEdit(message.getGroupId(), (BoardPostEdit) event);
+                    return "OK";
+                }
+                case BOARD_POST_RESTORE: {
+                    boardPostRestore(message.getGroupId(), (BoardPostRestore) event);
+                    return "OK";
+                }
+                case BOARD_POST_DELETE: {
+                    boardPostDelete(message.getGroupId(), (BoardPostDelete) event);
+                    return "OK";
+                }
+                case MARKET_COMMENT_NEW: {
+                    marketCommentNew(message.getGroupId(), (MarketComment) event);
+                    return "OK";
+                }
+                case MARKET_COMMENT_EDIT: {
+                    marketCommentEdit(message.getGroupId(), (MarketComment) event);
+                    return "OK";
+                }
+                case MARKET_COMMENT_RESTORE: {
+                    marketCommentRestore(message.getGroupId(), (MarketComment) event);
+                    return "OK";
+                }
+                case MARKET_COMMENT_DELETE: {
+                    marketCommentDelete(message.getGroupId(), (MarketCommentDelete) event);
+                    return "OK";
+                }
+                case GROUP_LEAVE: {
+                    groupLeave(message.getGroupId(), (GroupLeave) event);
+                    return "OK";
+                }
+                case GROUP_JOIN: {
+                    groupJoin(message.getGroupId(), (GroupJoin) event);
+                    return "OK";
+                }
+                case GROUP_CHANGE_SETTINGS: {
+                    groupChangeSettings(message.getGroupId(), (GroupChangeSettings) event);
+                    return "OK";
+                }
+                case GROUP_CHANGE_PHOTO: {
+                    groupChangePhoto(message.getGroupId(), (GroupChangePhoto) event);
+                    return "OK";
+                }
+                case GROUP_OFFICERS_EDIT: {
+                    groupOfficersEdit(message.getGroupId(), (GroupOfficersEdit) event);
+                    return "OK";
+                }
+                case USER_BLOCK: {
+                    userBlock(message.getGroupId(), (UserBlock) event);
+                    return "OK";
+                }
+                case USER_UNBLOCK: {
+                    userUnblock(message.getGroupId(), (UserUnblock) event);
+                    return "OK";
+                }
+                case POLL_VOTE_NEW: {
+                    pollVoteNew(message.getGroupId(), (PollVoteNew) event);
+                    return "OK";
+                }
+                default: {
+                    LOG.error("Unexpected callback event type received");
+                    return null;
+                }
             }
-            case MESSAGE_NEW: {
-                messageNew(message.getGroupId(), (MessageNew) event);
-                return "OK";
-            }
-            case MESSAGE_REPLY: {
-                messageReply(message.getGroupId(), (MessageReply) event);
-                return "OK";
-            }
-            case MESSAGE_EDIT: {
-                messageEdit(message.getGroupId(), (MessageEdit) event);
-                return "OK";
-            }
-            case MESSAGE_ALLOW: {
-                messageAllow(message.getGroupId(), (MessageAllow) event);
-                return "OK";
-            }
-            case MESSAGE_DENY: {
-                messageDeny(message.getGroupId(), (MessageDeny) event);
-                return "OK";
-            }
-            case PHOTO_NEW: {
-                photoNew(message.getGroupId(), (PhotoNew) event);
-                return "OK";
-            }
-            case PHOTO_COMMENT_NEW: {
-                photoCommentNew(message.getGroupId(), (PhotoComment) event);
-                return "OK";
-            }
-            case PHOTO_COMMENT_EDIT: {
-                photoCommentEdit(message.getGroupId(), (PhotoComment) event);
-                return "OK";
-            }
-            case PHOTO_COMMENT_RESTORE: {
-                photoCommentRestore(message.getGroupId(), (PhotoComment) event);
-                return "OK";
-            }
-            case PHOTO_COMMENT_DELETE: {
-                photoCommentDelete(message.getGroupId(), (PhotoCommentDelete) event);
-                return "OK";
-            }
-            case AUDIO_NEW: {
-                audioNew(message.getGroupId(), (AudioNew) event);
-                return "OK";
-            }
-            case VIDEO_NEW: {
-                videoNew(message.getGroupId(), (VideoNew) event);
-                return "OK";
-            }
-            case VIDEO_COMMENT_NEW: {
-                videoCommentNew(message.getGroupId(), (VideoComment) event);
-                return "OK";
-            }
-            case VIDEO_COMMENT_EDIT: {
-                videoCommentEdit(message.getGroupId(), (VideoComment) event);
-                return "OK";
-            }
-            case VIDEO_COMMENT_RESTORE: {
-                videoCommentRestore(message.getGroupId(), (VideoComment) event);
-                return "OK";
-            }
-            case VIDEO_COMMENT_DELETE: {
-                videoCommentDelete(message.getGroupId(), (VideoCommentDelete) event);
-                return "OK";
-            }
-            case WALL_POST_NEW: {
-                wallPostNew(message.getGroupId(), (WallPostNew) event);
-                return "OK";
-            }
-            case WALL_REPOST: {
-                wallRepost(message.getGroupId(), (WallRepost) event);
-                return "OK";
-            }
-            case WALL_REPLY_NEW: {
-                wallReplyNew(message.getGroupId(), (WallReplyNew) event);
-                return "OK";
-            }
-            case WALL_REPLY_EDIT: {
-                wallReplyEdit(message.getGroupId(), (WallReplyEdit) event);
-                return "OK";
-            }
-            case WALL_REPLY_RESTORE: {
-                wallReplyRestore(message.getGroupId(), (WallReplyRestore) event);
-                return "OK";
-            }
-            case WALL_REPLY_DELETE: {
-                wallReplyDelete(message.getGroupId(), (WallCommentDelete) event);
-                return "OK";
-            }
-            case BOARD_POST_NEW: {
-                boardPostNew(message.getGroupId(), (BoardPostNew) event);
-                return "OK";
-            }
-            case BOARD_POST_EDIT: {
-                boardPostEdit(message.getGroupId(), (BoardPostEdit) event);
-                return "OK";
-            }
-            case BOARD_POST_RESTORE: {
-                boardPostRestore(message.getGroupId(), (BoardPostRestore) event);
-                return "OK";
-            }
-            case BOARD_POST_DELETE: {
-                boardPostDelete(message.getGroupId(), (BoardPostDelete) event);
-                return "OK";
-            }
-            case MARKET_COMMENT_NEW: {
-                marketCommentNew(message.getGroupId(), (MarketComment) event);
-                return "OK";
-            }
-            case MARKET_COMMENT_EDIT: {
-                marketCommentEdit(message.getGroupId(), (MarketComment) event);
-                return "OK";
-            }
-            case MARKET_COMMENT_RESTORE: {
-                marketCommentRestore(message.getGroupId(), (MarketComment) event);
-                return "OK";
-            }
-            case MARKET_COMMENT_DELETE: {
-                marketCommentDelete(message.getGroupId(), (MarketCommentDelete) event);
-                return "OK";
-            }
-            case GROUP_LEAVE: {
-                groupLeave(message.getGroupId(), (GroupLeave) event);
-                return "OK";
-            }
-            case GROUP_JOIN: {
-                groupJoin(message.getGroupId(), (GroupJoin) event);
-                return "OK";
-            }
-            case GROUP_CHANGE_SETTINGS: {
-                groupChangeSettings(message.getGroupId(), (GroupChangeSettings) event);
-                return "OK";
-            }
-            case GROUP_CHANGE_PHOTO: {
-                groupChangePhoto(message.getGroupId(), (GroupChangePhoto) event);
-                return "OK";
-            }
-            case GROUP_OFFICERS_EDIT: {
-                groupOfficersEdit(message.getGroupId(), (GroupOfficersEdit) event);
-                return "OK";
-            }
-            case USER_BLOCK: {
-                userBlock(message.getGroupId(), (UserBlock) event);
-                return "OK";
-            }
-            case USER_UNBLOCK: {
-                userUnblock(message.getGroupId(), (UserUnblock) event);
-                return "OK";
-            }
-            case POLL_VOTE_NEW: {
-                pollVoteNew(message.getGroupId(), (PollVoteNew) event);
-                return "OK";
-            }
-            default: {
-                LOG.error("Unexpected callback event type received");
-                return null;
-            }
+        } catch (Exception e) {
+            LOG.error("При обработке callback-а возникла ошибка \"{}\": \"{}\" на строке {}", e.getClass().getName(), e.getMessage(), e.getStackTrace()[0]);
+
+            return null;
         }
     }
 }
