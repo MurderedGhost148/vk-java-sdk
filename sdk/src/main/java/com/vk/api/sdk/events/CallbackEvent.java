@@ -568,7 +568,7 @@ public interface CallbackEvent {
                 }
             }
         } catch (Exception e) {
-            LOG.error("При обработке callback-а возникла ошибка \"{}\": \"{}\" на строке {}", e.getClass().getName(), e.getMessage(), e.getStackTrace()[0]);
+            LOG.error("При обработке callback-а возникла ошибка \"{}\": \"{}\". \nСтек: {}", e.getClass().getName(), e.getMessage(), e.getStackTrace());
 
             return null;
         }
