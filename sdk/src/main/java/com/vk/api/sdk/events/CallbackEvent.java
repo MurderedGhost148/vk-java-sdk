@@ -400,11 +400,11 @@ public interface CallbackEvent {
             }
         }
 
-        CallbackEvent event = GSON.fromJson(objectToDeserialize, message.getType().getType());
-
-        System.out.println("Deserialized event object: " + event.toString());
-
         try {
+            CallbackEvent event = GSON.fromJson(objectToDeserialize, message.getType().getType());
+
+            System.out.println("Deserialized event object: " + event.toString());
+
             switch (message.getType()) {
                 case CONFIRMATION: {
                     confirmation();
