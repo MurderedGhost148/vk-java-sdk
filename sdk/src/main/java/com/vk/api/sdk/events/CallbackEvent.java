@@ -377,8 +377,8 @@ public interface CallbackEvent {
     }
 
     default String parse(CallbackMessage message) {
-        System.out.println("Received callback message type: " + message.getType());
-        System.out.println("Received callback message: " + message.getObject());
+        LOG.info("Received callback message type: {}", message.getType());
+        LOG.info("Received callback message: {}", message.getObject());
 
         if(message.getType() == null) {
             LOG.error("Callback message type is null on: {}", message);
@@ -403,7 +403,7 @@ public interface CallbackEvent {
         try {
             CallbackEvent event = GSON.fromJson(objectToDeserialize, message.getType().getType());
 
-            System.out.println("Deserialized event object: " + event.toString());
+            LOG.info("Deserialized event object: {}", event.toString());
 
             switch (message.getType()) {
                 case CONFIRMATION: {
